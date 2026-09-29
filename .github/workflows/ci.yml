@@ -4,9 +4,18 @@ on:
   push:
 
 jobs:
-  demo:
+  check:
     runs-on: windows-latest
 
     steps:
-      - name: Print Message
-        run: echo "Hello this is My first pipeline its running"
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Check HTML file
+        run: Test-Path index.html
+    
+      - name: Check CSS file
+        run: Test-Path style.css
+    
+      - name: Check JavaScript file
+        run: Test-Path script.js
